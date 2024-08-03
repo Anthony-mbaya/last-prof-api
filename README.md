@@ -33,6 +33,12 @@
 4. ceate django app
 5. create profiles api
 6. viewsets
+    a. take care of typical logic
+    b. use serializers to convert data to json
+    c. perfect for dtandard db operations
+    d. perform sinpmple CRUD
+    e. quick and simple api
+    f. working with standard db structures
 7. apiviews
     a. need full control over the logic
     b. need to process files and rendder synchronous res - eg validate and return
