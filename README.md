@@ -32,6 +32,21 @@
 3. create dev server
 4. ceate django app
 5. create profiles api
+    a. create new profiles
+        1.handle reg of new users
+        2. validate profile data
+    b.listing existeing profiles
+        1. search for profiles by name or email
+    c. view specific profiels
+        1.usong prof di
+    d. allow users to update name,email,password
+    e. allow users to delete profiles
+    f. api endpoints
+        1. /api/profile/ - list all profiles on HTTP GET
+        2. /api/profile/ - create new profile on HTTP POST
+        3. /api/profile/{id}/ - view profile on HTTP GET
+        4. /api/profile/{id}/ - update profile on HTTP PUT PATCH
+        5. /api/profile/{id}/ - delete profile on HTTP DELETE
 6. viewsets
     a. take care of typical logic
     b. use serializers to convert data to json

@@ -3,6 +3,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from profiles_api_app import serializers
 from rest_framework import viewsets
+from profiles_api_app import models  
+#Token auth - gen ran token str wen user logs in checkin every req is auth
+from rest_framework.authentication import TokenAuthentication 
+from profiles_api_app import permissions
 # Create your views here.
  
 class Hello(APIView):
@@ -110,3 +114,12 @@ class HelloViewset(viewsets.ViewSet):
     def destroy(self, request, pk=None):
         """Delete an object"""
         return Response({ 'message' : f'Hello {pk} deleted'})
+    
+
+class UserProfileViewset(viewsets.ModelViewSet):
+    """Handles creating, reading and updating profile"""
+    serializer_class = serializers.UserProfileSerializer
+    # determines functionalities of viewsets(CRUD) - CREATE, READ, UPDATE, DELETE ....
+    queryset = models.UserProfile.objects.all() #RETRIEVE ALL DATA FROM DB
+    authentication_classes = (TokenAuthentication, )
+    permission_classes = (permissions.UpdateOwnProfile,)
