@@ -1,6 +1,23 @@
 #   Profiles rest api
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 1. set up a dev env
     a.vagrant - defines wat server to use - ubuntu
     b.vagrant use virtual box to create a virtual server
