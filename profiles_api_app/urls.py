@@ -10,5 +10,6 @@ router.register('profiles', views.UserProfileViewset)
 urlpatterns = [
     path('hello', views.Hello.as_view()),
     path('studs', views.StudentMarks.as_view()), 
+    path('login/', views.UserLoginApiView.as_view()),
     path('', include(router.urls)) #empty url to pass all the urls not speciying name
 ]
