@@ -30,10 +30,14 @@
     e. ModHeader - modify http headers when testing api
 2. set proj
 3. create dev server
-4 ceate django app
+4. ceate django app
 5. create profiles api
 6. viewsets
 7. apiviews
+    a. need full control over the logic
+    b. need to process files and rendder synchronous res - eg validate and return
+    c. calling other apis
+    d. working with local files
 8. django admin
 9. setup db
 10. create login api
