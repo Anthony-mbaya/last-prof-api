@@ -6,6 +6,7 @@ from rest_framework import viewsets
 from profiles_api_app import models  
 #Token auth - gen ran token str wen user logs in checkin every req is auth
 from rest_framework.authentication import TokenAuthentication 
+from rest_framework import filters
 from profiles_api_app import permissions
 # Create your views here.
  
@@ -122,4 +123,6 @@ class UserProfileViewset(viewsets.ModelViewSet):
     # determines functionalities of viewsets(CRUD) - CREATE, READ, UPDATE, DELETE ....
     queryset = models.UserProfile.objects.all() #RETRIEVE ALL DATA FROM DB
     authentication_classes = (TokenAuthentication, )
-    permission_classes = (permissions.UpdateOwnProfile,)
+    permission_classes = (permissions.UpdateOwnProfile, )
+    filter_backends = (filters.SearchFilter, )
+    search_fields = ('name', 'email',)
