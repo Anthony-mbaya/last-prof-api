@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
+from django.conf import settings #retrieve settings fom settings.py - AUTH_USER_MODEL
 
 # Create your models here.
 
@@ -60,3 +61,18 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     #returning string representation of user
     def __str__(self):
         return self.email
+
+
+class ProfilesFeedItem(models.Model):
+    """profile status update"""
+    user_profile = models.ForeignKey(
+        #specify model you want to set rel with - retrieve form settings .py bcos you man chnge to default user model
+        settings.AUTH_USER_MODEL,
+        #if user_orifie is deleted the associated feed item shold be deleted as well
+        on_delete=models.CASCADE
+    )
+    blog_text = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)#automatically add time stamp
+
+    def __str__(self):
+        return self.blog_text

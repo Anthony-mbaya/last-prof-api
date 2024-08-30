@@ -42,11 +42,11 @@
     d. allow users to update name,email,password
     e. allow users to delete profiles
     f. api endpoints
-        1. /api/profile/ - list all profiles on HTTP GET
-        2. /api/profile/ - create new profile on HTTP POST
-        3. /api/profile/{id}/ - view profile on HTTP GET
-        4. /api/profile/{id}/ - update profile on HTTP PUT PATCH
-        5. /api/profile/{id}/ - delete profile on HTTP DELETE
+        2. /profile-api/profiles/ - create new profile on HTTP POST
+        1. /profile-api/profiles/ - list all profiles on HTTP GET
+        3. /profile-api/profiles/{id}/ - view profile on HTTP GET
+        4. /profile-api/profiles/{id}/ - update profile on HTTP PUT PATCH
+        5. /profile-api/profiles/{id}/ - delete profile on HTTP DELETE
 6. viewsets
     a. take care of typical logic
     b. use serializers to convert data to json
@@ -62,7 +62,18 @@
 8. django admin
 9. setup db
 10. create login api
-11. deploy
+11. create profile feed api
+    a. craete new feed item for auth users
+    b. list all feed items for auth users
+    c. updating existing items
+    d. deleting items
+    e. api endpoints
+        1. /feed-api/feed/ - list all feed items
+        2. /feed-api/feed/ - create new feed item on HTTP POST
+        3. /feed-api/feed/{id}/ - view feed item on HTTP GET
+        4. /feed-api/feed/{id}/ - update feed item on HTTP PUT PATCH
+        5. /feed-api/feed/{id}/ - delete feed item on HTTP DELETE
+12. deploy
 
 #VAGRANT VS DOCKER - both use virtualization technique to isolate app from the machine running on
 #DOCKER - run app in light weight image - linux os,limited versions

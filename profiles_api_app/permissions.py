@@ -12,3 +12,14 @@ class UpdateOwnProfile(permissions.BasePermission):
         
         #check if user is trying to edit their own profile
         return obj.id == request.user.id
+
+
+class UpdateOwnBlog(permissions.BasePermission):
+    """"allow update of own blog"""
+
+    def has_object_permission(self, request, view, obj):
+        """check if user is trying to edit their own blog"""
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        
+        return obj.user_profile.id == request.user.id
