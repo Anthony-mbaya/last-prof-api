@@ -6,7 +6,8 @@ class UpdateOwnProfile(permissions.BasePermission):
     #called evry time request is made
     def has_object_permission(self, request, view, obj):
         """Check if user is trying to edit their own profile"""
-        #safe - http get unsafe - http post,put
+        #safe - http get 
+        # unsafe - http post,put
         if request.method in permissions.SAFE_METHODS:
             return True
         

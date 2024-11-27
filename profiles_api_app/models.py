@@ -1,22 +1,23 @@
 from django.db import models
 
+
 #use this when overriding django user default model
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
+
 from django.conf import settings #retrieve settings fom settings.py - AUTH_USER_MODEL
 
-# Create your models here.
-
-
+# custom manager is often used to add custom query methods to the model, \
+# like handling user creation or retrieving users based on specific conditions.
 class UserProfileManager(BaseUserManager):
     """Manager for user profiles"""
     def create_user(self, email, name, password=None):
-        """Create a new user profile"""
+        """Create a new user profile - in django cli"""
         #if email not available
         if not email:
             raise ValueError('Users must have an email address')
-        #normalize email - onverting the email to lowercase to maintain consistency.
+        #normalize email - converting the email to lowercase to maintain consistency.
         email = self.normalize_email(email) 
         #create a new user - user=from baseuermanager model
         user = self.model(email=email, name=name)
@@ -41,14 +42,14 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     email  = models.EmailField(max_length=255, unique=True) #unique email
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False) # acces to dj admin
 
 
     objects = UserProfileManager()
 
 
     #overriding default 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'email' # unique identifier of user
     REQUIRED_FIELDS = ['name']
 
 

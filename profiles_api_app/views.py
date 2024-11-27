@@ -1,16 +1,16 @@
-from rest_framework.views import APIView
+from rest_framework.views import APIView # import class
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status # status code 
 from profiles_api_app import serializers
 from rest_framework import viewsets
 from profiles_api_app import models  
-#Token auth - gen ran token str wen user logs in checkin every req is auth
+#Token auth - gen random token str wen user logs in checkin every req is auth
 from rest_framework.authentication import TokenAuthentication 
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 from rest_framework import filters
 from profiles_api_app import permissions
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated # blocks accesss to entire endpoint unless authenticated
 # Create your views here.
  
 class Hello(APIView):
@@ -96,7 +96,8 @@ class HelloViewset(viewsets.ViewSet):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             name = serializer.validated_data.get('name')
-            message = f'Welcome { name }'
+            age = serializer.validated_data.get('age')
+            message = f'Welcome { name }de age { age }'
             return Response({ 'message' : message })
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
